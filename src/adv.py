@@ -1,5 +1,6 @@
 from room import Room
-
+from player import Player
+from item import Item
 # Declare all the rooms
 
 room = {
@@ -19,7 +20,7 @@ to north. The smell of gold permeates the air."""),
     'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
 chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
-}
+} 
 
 
 # Link rooms together
@@ -38,9 +39,15 @@ room['treasure'].s_to = room['narrow']
 #
 
 # Make a new player object that is currently in the 'outside' room.
-
+bryan = Player("Bryan", room["outside"])
+print(bryan.current_room)
+user = input("Where would you like to go?...\n")
 # Write a loop that:
-#
+while not user == 'q':
+    bryan.move_rooms(user)
+    print("\n" + bryan.current_room)
+    user = input("Where would you like to go?...\n")
+
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
